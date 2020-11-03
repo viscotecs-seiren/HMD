@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-TW">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -25,7 +25,7 @@
 			padding: 0;
 			background-color: white;
 
-			font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN W3", HiraKakuProN-W3, "メイリオ", "Meiryo", -apple-system, BlinkMacSystemFont, sans-serif;
+			font-family: "SF Pro TC","SF Pro Text","SF Pro Icons","PingFang TC",-apple-system, BlinkMacSystemFont, sans-serif;
 
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
@@ -342,6 +342,7 @@
 			display: flex;
 			min-height: 680px;
 		}
+
 		#view-4-product .product-img-selector{
 			height: 640px;
 			width: 64px;
@@ -518,7 +519,6 @@
 			background-color:  #F42A14;
 			border-radius: 10px;
 		}
-
 		#view-5-brand {
 			text-align: start !important;
 			padding-left: 65px;
@@ -715,7 +715,6 @@
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('./ServiceWorker.js').then(()=>{},()=>{});
 			}
-
 			init_View_0();
 			init_View_1();
 			init_View_2();
@@ -727,7 +726,6 @@
 		function get_Image(productNumber, colorCode, colorSubCode, face) {
 			return `./ProductImages/${productNumber}/${colorCode}/${productNumber}_${colorCode}_${colorSubCode}_${face}.jpg`;
 		}
-
 		function change_View(view_hide,view_show) {
 			$(view_hide).hide();
 			$(view_show).show();
@@ -811,7 +809,6 @@
 
 		function init_View_5() {
 			$("#view-5-logo-img").attr("src",img_logo_2);
-
 			$("#view-5-print").on("click",function(){window.print();return false;});
 			$("#view-5-exit").on("click",function(){change_View("#view-5", "#view-0");return false;});
 		}
@@ -820,6 +817,7 @@
 			$(target + " .select-img").width(width);
 			$(target + " .select-name").width(width);
 			$(target + " .select-price").width(width);
+
 
 			$(target + " .select-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 			$(target + " .select-size").text(productInfo[productNumber].size);
@@ -864,6 +862,7 @@
 			$("#view-2-select-color").data(product);
 			$("#view-2-select-colorSub").data(product);
 			$("#view-2-select-order").data(product);
+
 
 			change_View("#view-1", "#view-2");
 		}
@@ -931,15 +930,15 @@
 			}
 
 			if(type === "design") {
-				$("#view-3-title1").text("デザインを選択");
+				$("#view-3-title1").text("選擇設計");
 				$("#view-3-title2").text("Design");
 			}
 			else if(type === "color") {
-				$("#view-3-title1").text("柄を選択");
+				$("#view-3-title1").text("選擇圖案");
 				$("#view-3-title2").text("Pattern");
 			}
 			else if(type === "colorSub") {
-				$("#view-3-title1").text("色を選択");
+				$("#view-3-title1").text("選擇顏色");
 				$("#view-3-title2").text("Color");
 			}
 
@@ -948,7 +947,6 @@
 
 		function set_View_3_Product(target, productNumber, colorCode, colorSubCode, text, width) {
 			$(target + " .select-frame").empty().append("<img class='select-img'/>");
-
 			$(target + " .select-img").width(width);
 			$(target + " .select-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 
@@ -960,6 +958,7 @@
 				colorCode		: colorCode,
 				colorSubCode	: colorSubCode
 			});
+
 
 			show_View(target);
 		}
@@ -980,13 +979,14 @@
 			$("#view-4-product .product-size").text("");
 			hide_View("#view-4-order-select");
 
-			$("#view-4-product-size-1").data(Object.assign({}, product, {sizeCode: "07"}));
-			$("#view-4-product-size-2").data(Object.assign({}, product, {sizeCode: "09"}));
-			$("#view-4-product-size-3").data(Object.assign({}, product, {sizeCode: "11"}));
-			$("#view-4-product-size-4").data(Object.assign({}, product, {sizeCode: "13"}));
-			$("#view-4-product-size-5").data(Object.assign({}, product, {sizeCode: "15"}));
-			$("#view-4-product-size-6").data(Object.assign({}, product, {sizeCode: "16"}));
-			$("#view-4-product-size-7").data(Object.assign({}, product, {sizeCode: "17"}));
+			$("#view-4-product-size-1").data(Object.assign({}, product, { sizeCode: "07"}));
+			$("#view-4-product-size-2").data(Object.assign({}, product, { sizeCode: "09"}));
+			$("#view-4-product-size-3").data(Object.assign({}, product, { sizeCode: "11"}));
+			$("#view-4-product-size-4").data(Object.assign({}, product, { sizeCode: "13"}));
+			$("#view-4-product-size-5").data(Object.assign({}, product, { sizeCode: "15"}));
+			$("#view-4-product-size-6").data(Object.assign({}, product, { sizeCode: "16"}));
+			$("#view-4-product-size-7").data(Object.assign({}, product, { sizeCode: "17"}));
+
 
 			change_View("#view-2", "#view-4");
 		}
@@ -1009,9 +1009,11 @@
 			var colorSubCode	= Order.colorSubCode;
 			var sizeCode		= Order.sizeCode;
 			var size			= sizeName[sizeCode];
+
 			var now				= new Date();
 
-			$("#view-5-product-img"		).attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
+			$("#view-5-product-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
+
 
 			$("#view-5-date"			).text(formatDate(now, "yyyy年MM月dd日"));
 			$("#view-5-productNumber"	).text(productReNumber[productNumber][sizeCode] || productNumber);
@@ -1036,6 +1038,7 @@
 			};
 			new QRCode($("#view-5-qrcode").get(0),options);
 
+
 			change_View("#view-4", "#view-5");
 		}
 
@@ -1050,7 +1053,7 @@
 			return format;
 		}
 	</script>
-</head>
+	</head>
 <body>
 	<div id="root">
 		<div id="view-0">
@@ -1108,18 +1111,18 @@
 							</div>
 						</div>
 						<div id="view-2-product-img">
-							<img class="product-img"/>
+						<img class="product-img"/>
 						</div>
 						<div class="product-frame">
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">デザイン</div>
+										<div class="cell-header-title-1">設計</div>
 										<div class="cell-header-title-2">Design</div>
 									</div>
 									<div id="view-2-select-design" class="cell-select cell-box">
 										<div class="cell-select-mark"><div class="cell-select-mark-arrow"></div></div>
-										<div class="cell-select-text">デザインを選択</div>
+										<div class="cell-select-text">選擇設計</div>
 									</div>
 								</div>
 								<div class="cell-value">
@@ -1129,12 +1132,12 @@
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">柄</div>
+										<div class="cell-header-title-1">圖案</div>
 										<div class="cell-header-title-2">Pattern</div>
 									</div>
 									<div id="view-2-select-color"  class="cell-select cell-box">
 										<div class="cell-select-mark"><div class="cell-select-mark-arrow"></div></div>
-										<div class="cell-select-text">柄を選択</div>
+										<div class="cell-select-text">選擇圖案</div>
 									</div>
 								</div>
 								<div class="cell-value">
@@ -1144,12 +1147,12 @@
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">色</div>
+										<div class="cell-header-title-1">顏色</div>
 										<div class="cell-header-title-2">Color</div>
 									</div>
 									<div id="view-2-select-colorSub" class="cell-select cell-box">
 										<div class="cell-select-mark"><div class="cell-select-mark-arrow"></div></div>
-										<div class="cell-select-text">色を選択</div>
+										<div class="cell-select-text">選擇顏色</div>
 									</div>
 								</div>
 								<div class="cell-value">
@@ -1159,7 +1162,7 @@
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">価格</div>
+										<div class="cell-header-title-1">價格</div>
 										<div class="cell-header-title-2">Price</div>
 									</div>
 									<div class="cell-select">
@@ -1216,7 +1219,7 @@
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">デザイン</div>
+										<div class="cell-header-title-1">設計</div>
 										<div class="cell-header-title-2">Design</div>
 									</div>
 									<div class="cell-order">
@@ -1227,7 +1230,7 @@
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">柄</div>
+										<div class="cell-header-title-1">圖案</div>
 										<div class="cell-header-title-2">Pattern</div>
 									</div>
 									<div class="cell-order">
@@ -1238,7 +1241,7 @@
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">色</div>
+										<div class="cell-header-title-1">顏色</div>
 										<div class="cell-header-title-2">Color</div>
 									</div>
 									<div class="cell-order">
@@ -1249,7 +1252,7 @@
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">価格</div>
+										<div class="cell-header-title-1">價格</div>
 										<div class="cell-header-title-2">Price</div>
 									</div>
 									<div class="cell-select">
@@ -1260,7 +1263,7 @@
 							<div class="product-cell">
 								<div class="cell-header">
 									<div class="cell-header-title">
-										<div class="cell-header-title-1">サイズを選択</div>
+										<div class="cell-header-title-1">選擇尺寸</div>
 									</div>
 									<div class="cell-select">
 										<div class="product-size"></div>
@@ -1279,7 +1282,7 @@
 								</div>
 							</div>
 							<div class="product-order">
-								<div id="view-4-order-select" class="order-select">オーダーする</div>
+								<div id="view-4-order-select" class="order-select">下訂單</div>
 							</div>
 						</div>
 					</div>
@@ -1295,41 +1298,41 @@
 								<div class="margin-top-24"><img id="view-5-logo-img"/></div>
 								<div class="width-324">
 									<img id="view-5-product-img"/>
-									<div class="text-top">ご注文商品イメージ</div>
+									<div class="text-top">下訂商品樣式</div>
 								</div>
-								<div class="text-6">ご注意：柄位置、色合いが実際の商品と異なる場合があります。</div>
-								<div class="text-6">ご了承ください。</div>
+								<div class="text-6">圖案位置、配色有可能和實際商品不同，請見諒</div>
+								<div class="text-6"></div>
 							</div>
 						</td>
 						<td><div class="width-16"></div></td>
 						<td class="layout-top">
 							<div class="width-640">
-								<div class="text-title margin-top-24">発注書　兼　オーダー同意書</div>
+								<div class="text-title margin-top-24">訂單　兼　下訂同意書</div>
 								<div id="view-5-exit">終了</div>
 								<div >
 									<table class="table-border text-12">
 										<tr class="row-36">
-											<td class="col-100"><div>ご注文№</div></td>
+											<td class="col-100"><div>訂單No.</div></td>
 											<td class="col-500" colspan="3"><div></div></td>
 										</tr>
 										<tr class="row-36">
-											<td class="col-100"><div>ブランド名</div></td>
-											<td class="col-500" colspan="3"><div><div id="view-5-brand">レリアン</div></div></td>
+											<td class="col-100"><div>品牌</div></td>
+											<td class="col-500" colspan="3"><div><div id="view-5-brand">Leilian</div></div></td>
 										</tr>
 										<tr class="row-36">
-											<td class="col-100"><div>ご注文日</div></td>
+											<td class="col-100"><div>下訂日期</div></td>
 											<td class="col-200"><div id="view-5-date"></div></td>
-											<td class="col-100"><div>お渡し予定日</div></td>
+											<td class="col-100"><div>預計交貨日</div></td>
 											<td class="col-200"><div></div>
 										</td></tr>
 										<tr class="row-36">
-											<td class="col-100"><div>品番</div></td>
+											<td class="col-100"><div>貨號</div></td>
 											<td class="col-200"><div id="view-5-productNumber"></div></td>
 											<td class="col-100"><div>品名</div></td>
 											<td class="col-200"><div id="view-5-product"></div></td>
 										</tr>
 										<tr class="row-36">
-											<td class="col-100"><div>サイズ</div></td>
+											<td class="col-100"><div>尺寸</div></td>
 											<td class="col-200"><div id="view-5-size"></div></td>
 											<td class="col-100"><div>色</div></td>
 											<td class="col-200"><div id="view-5-color"></div></td>
@@ -1341,7 +1344,7 @@
 											<td class="col-200"><div id="view-5-price"></div></td>
 										</tr>
 										<tr class="row-48">
-											<td class="col-100"><div>その他</div></td>
+											<td class="col-100"><div>備註</div></td>
 											<td class="col-500" colspan="3"><div></div></td>
 										</tr>
 									</table>
@@ -1349,7 +1352,7 @@
 										<tr class="row-56">
 											<td class="col-100"><div></div></td>
 											<td class="col-200"><div></div></td>
-											<td class="col-100 border-bottom align-center "><div class="text-6">フリガナ</div><div>お名前</div></td>
+											<td class="col-100 border-bottom align-center "><div class="text-6">　</div><div>姓名</div></td>
 											<td class="col-200 border-bottom"><div class="text-6">　</div><div class="align-end">様</div></td>
 										</tr>
 									</table>
@@ -1362,11 +1365,11 @@
 										</tr>
 										<tr>
 											<td class="col-500 text-12">
-												<div>本書の内容を予めご同意いただいた上でご発注いただきますようお願い申し上げます。</div>
-												<div>　□私は、下記項目に同意いたします。</div>
-												<div>　　・発注書記載内容のデザイン、サイズにて商品を発注することに間違いありません</div>
-												<div>　　・オーダー品のため、返品・交換はできません</div>
-												<div>　　・ご注文後のキャンセルは原則お受けすることができません</div>
+												<div>本人同意下列所有項目。</div>
+												<div>　□本人同意下列所有項目。</div>
+												<div>　　・本公司會依照訂單裡所記載的內容、款式、尺寸等訂做商品</div>
+												<div>　　・由於此為專屬訂做商品，故不接受退貨、換貨</div>
+												<div>　　・原則上下訂後不接受取消</div>
 											</td>
 											<td class="col-100"><div id="view-5-qrcode"></div><div id="view-5-print">印刷</div></td>
 										</tr>
@@ -1376,12 +1379,12 @@
 											<td class="col-100"><div></div></td>
 											<td class="col-300"><div class="align-end">年　　　　月　　　　日</div></td>
 											<td class="col-200" rowspan="2"><div>
-												<div class="margin-left-140 text-12">担当印</div>
+												<div class="margin-left-140 text-12">負責人簽章</div>
 												<div class="margin-left-140 sign-box"></div>
 											</div></td>
 										</tr>
 										<tr>
-											<td class="col-100 border-bottom align-center "><div>ご署名</div></td>
+											<td class="col-100 border-bottom align-center "><div>簽名</div></td>
 											<td class="col-300 border-bottom"><div</div></td>
 										</tr>
 									</table>
