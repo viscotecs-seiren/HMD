@@ -5,9 +5,10 @@ self.addEventListener("fetch", (event) => {
 		caches.open(CACHE_NAME).then(async (cache) => {
 			const response = await cache.match(event.request);
 
-			if(response){console.log("Hit");}
-
 			return response || fetch(event.request).then((fetch_response) => {
+
+				console.log("Load");
+
 				cache.put(event.request, fetch_response.clone());
 				return fetch_response;
 			});
