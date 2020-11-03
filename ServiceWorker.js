@@ -1,8 +1,7 @@
 const CACHE_NAME = 'HMD_CACHE';
 
 self.addEventListener('activate', (event) => {
-	console.log('Claiming control');
-	return self.clients.claim();
+	event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener("fetch", (event) => {
@@ -10,12 +9,14 @@ self.addEventListener("fetch", (event) => {
 		caches.open(CACHE_NAME).then(async (cache) => {
 			const response = await cache.match(event.request);
 
-			return response || fetch(event.request).then((fetch_response) => {
+			return response || fetch(event.request).then((_response) => {
+				if(!_response || _response.status !== 200 || _response.type !== 'basic') {
+					return _response;
+				}
 
-				console.log("Load");
+				cache.put(event.request, _response.clone());
 
-				cache.put(event.request, fetch_response.clone());
-				return fetch_response;
+				return _response;
 			});
 		})
 	);
