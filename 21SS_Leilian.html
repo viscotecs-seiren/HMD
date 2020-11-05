@@ -88,10 +88,14 @@
 		}
 		.view-1-select {
 			font-size: 12px;
-			margin: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 		.view-1-select .select-frame {
 			position: relative;
+			margin: 20px 20px 0px 20px ;
 		}
 		.view-1-select .select-size{
 			position: absolute;
@@ -103,12 +107,18 @@
 		.view-1-select .select-img {
 			width: 120px;
 			vertical-align: bottom;
+			min-width: 120px;
+			min-height: 233px;
 		}
 		.view-1-select .select-name {
 			text-align: center;
-			white-space: wrap;
-			width: 120px;
-			height: 36px;
+			white-space: nowrap;
+			overflow: hidden;
+			max-width: 160px;
+			height: 18px;
+		}
+		.view-1-select .select-number {
+			text-align: center;
 		}
 		.view-1-select .select-price {
 			text-align: center;
@@ -206,7 +216,7 @@
 			height: 40px;
 			line-height: 40px;
 			font-size: 18px;
-			overflow: hidden;
+			white-space: nowrap;
 			font-weight: 600;
 			color: #B48F00;
 		}
@@ -318,17 +328,27 @@
 		}
 		.view-3-select {
 			font-size: 12px;
-			margin: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.view-3-select .select-frame {
+			position: relative;
+			margin: 20px 20px 0px 20px ;
 		}
 		.view-3-select .select-img {
 			width: 120px;
 			vertical-align: bottom;
+			min-width: 120px;
+			min-height: 233px;
 		}
 		.view-3-select .select-text {
 			text-align: center;
-			white-space: wrap;
-			width: 120px;
-			height: 36px;
+			white-space: nowrap;
+			overflow: hidden;
+			max-width: 160px;
+			height: 18px;
 		}
 
 		#view-4 {
@@ -588,16 +608,16 @@
 		};
 
 		var productInfo = {
-			"0100759":{name:"フロントオープンフレア 0759"	, price:123456, size: "7～17+号",	},
-			"0100760":{name:"Iライン レギュラー 0760"		, price:123456, size: "7～17+号",	},
-			"0100761":{name:"Iライン ショート 0761"			, price:123456, size: "7～17+号",	},
-			"0100762":{name:"Iライン ロング 0762"			, price:123456, size: "7～17+号",	},
-			"0100765":{name:"Vフロントオープン 0765"		, price:123456, size: "7～17+号",	},
-			"0100767":{name:"ウエストシャーリング 0767"		, price:123456, size: "7～17+号",	},
-			"0100763":{name:"コクーン 0763"					, price:123456, size: "7～17+号",	},
-			"0100768":{name:"マテリアルミックス 0768"		, price:123456, size: "7～17+号",	},
-			"0100764":{name:"コクーン 0764"					, price:123456, size: "7～17+号",	},
-			"0100766":{name:"Vフロントオープン 0766"		, price:123456, size: "7～17+号",	}
+			"0100759":{name:"フロントオープンフレア"	, price:123456, size: "7～17+号",	},
+			"0100760":{name:"Iライン レギュラー"		, price:123456, size: "7～17+号",	},
+			"0100761":{name:"Iライン ショート"			, price:123456, size: "7～17+号",	},
+			"0100762":{name:"Iライン ロング"			, price:123456, size: "7～17+号",	},
+			"0100765":{name:"Vフロントオープン"			, price:123456, size: "7～17+号",	},
+			"0100767":{name:"ウエストシャーリング"		, price:123456, size: "7～17+号",	},
+			"0100763":{name:"コクーン"					, price:123456, size: "7～17+号",	},
+			"0100768":{name:"マテリアルミックス"		, price:123456, size: "7～17+号",	},
+			"0100764":{name:"コクーン"					, price:123456, size: "7～17+号",	},
+			"0100766":{name:"Vフロントオープン"			, price:123456, size: "7～17+号",	}
 		};
 
 		var products = {
@@ -818,12 +838,11 @@
 
 		function set_View_1_Product(target, productNumber, colorCode, colorSubCode, width) {
 			$(target + " .select-img").width(width);
-			$(target + " .select-name").width(width);
-			$(target + " .select-price").width(width);
 
 			$(target + " .select-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 			$(target + " .select-size").text(productInfo[productNumber].size);
 			$(target + " .select-name").text(productInfo[productNumber].name);
+			$(target + " .select-number").text(productNumber.slice(-4));
 			$(target + " .select-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
 
 			$(target).data({
@@ -855,7 +874,7 @@
 
 			set_View_2_Image(Object.assign({}, product, {face: "0"}));
 
-			$("#view-2-product .product-name").text(productInfo[productNumber].name);
+			$("#view-2-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-2-product .product-color").text(colorName[colorCode]);
 			$("#view-2-product .product-colorSub").text(colorSubName[colorSubCode]);
 			$("#view-2-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
@@ -952,7 +971,7 @@
 			$(target + " .select-img").width(width);
 			$(target + " .select-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 
-			$(target + " .select-text").width(width);
+			//$(target + " .select-text").width(width);
 			$(target + " .select-text").text(text);
 
 			$(target).data({
@@ -971,7 +990,7 @@
 
 			$("#view-4-product .product-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 
-			$("#view-4-product .product-name").text(productInfo[productNumber].name);
+			$("#view-4-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-4-product .product-color").text(colorName[colorCode]);
 			$("#view-4-product .product-colorSub").text(colorSubName[colorSubCode]);
 			$("#view-4-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
@@ -1068,18 +1087,18 @@
 			</div>
 			<div id="view-1-content">
 				<div class="flex-center">
-					<div id="view-1-select0" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select1" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select2" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select3" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select4" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
+					<div id="view-1-select0" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select1" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select2" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select3" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select4" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
 				</div>
 				<div class="flex-center">
-					<div id="view-1-select5" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select6" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select7" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select8" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select9" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
+					<div id="view-1-select5" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select6" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select7" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select8" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select9" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
 				</div>
 			</div>
 		</div>

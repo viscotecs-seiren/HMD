@@ -88,10 +88,14 @@
 		}
 		.view-1-select {
 			font-size: 12px;
-			margin: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 		.view-1-select .select-frame {
 			position: relative;
+			margin: 20px 20px 0px 20px ;
 		}
 		.view-1-select .select-size{
 			position: absolute;
@@ -103,12 +107,18 @@
 		.view-1-select .select-img {
 			width: 120px;
 			vertical-align: bottom;
+			min-width: 120px;
+			min-height: 233px;
 		}
 		.view-1-select .select-name {
 			text-align: center;
-			white-space: wrap;
-			width: 120px;
-			height: 36px;
+			white-space: nowrap;
+			overflow: hidden;
+			max-width: 160px;
+			height: 18px;
+		}
+		.view-1-select .select-number {
+			text-align: center;
 		}
 		.view-1-select .select-price {
 			text-align: center;
@@ -206,7 +216,7 @@
 			height: 40px;
 			line-height: 40px;
 			font-size: 18px;
-			overflow: hidden;
+			white-space: nowrap;
 			font-weight: 600;
 			color: #B48F00;
 		}
@@ -318,17 +328,27 @@
 		}
 		.view-3-select {
 			font-size: 12px;
-			margin: 20px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.view-3-select .select-frame {
+			position: relative;
+			margin: 20px 20px 0px 20px ;
 		}
 		.view-3-select .select-img {
 			width: 120px;
 			vertical-align: bottom;
+			min-width: 120px;
+			min-height: 233px;
 		}
 		.view-3-select .select-text {
 			text-align: center;
-			white-space: wrap;
-			width: 120px;
-			height: 36px;
+			white-space: nowrap;
+			overflow: hidden;
+			max-width: 160px;
+			height: 18px;
 		}
 
 		#view-4 {
@@ -342,7 +362,6 @@
 			display: flex;
 			min-height: 680px;
 		}
-
 		#view-4-product .product-img-selector{
 			height: 640px;
 			width: 64px;
@@ -519,6 +538,7 @@
 			background-color:  #F42A14;
 			border-radius: 10px;
 		}
+
 		#view-5-brand {
 			text-align: start !important;
 			padding-left: 65px;
@@ -622,6 +642,7 @@
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('./ServiceWorker.js').then(()=>{},()=>{});
 			}
+
 			init_View_0();
 			init_View_1();
 			init_View_2();
@@ -717,19 +738,18 @@
 
 		function init_View_5() {
 			$("#view-5-logo-img").attr("src",img_logo_2);
+
 			$("#view-5-print").on("click",function(){window.print();return false;});
 			$("#view-5-exit").on("click",function(){change_View("#view-5", "#view-0");return false;});
 		}
 
 		function set_View_1_Product(target, productNumber, colorCode, colorSubCode, width) {
 			$(target + " .select-img").width(width);
-			$(target + " .select-name").width(width);
-			$(target + " .select-price").width(width);
-
 
 			$(target + " .select-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 			$(target + " .select-size").text(productInfo[productNumber].size);
 			$(target + " .select-name").text(productInfo[productNumber].name);
+			$(target + " .select-number").text(productNumber.slice(-4));
 			$(target + " .select-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
 
 			$(target).data({
@@ -761,7 +781,7 @@
 
 			set_View_2_Image(Object.assign({}, product, {face: "0"}));
 
-			$("#view-2-product .product-name").text(productInfo[productNumber].name);
+			$("#view-2-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-2-product .product-color").text(colorName[colorCode]);
 			$("#view-2-product .product-colorSub").text(colorSubName[colorSubCode]);
 			$("#view-2-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
@@ -854,10 +874,11 @@
 
 		function set_View_3_Product(target, productNumber, colorCode, colorSubCode, text, width) {
 			$(target + " .select-frame").empty().append("<img class='select-img'/>");
+
 			$(target + " .select-img").width(width);
 			$(target + " .select-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 
-			$(target + " .select-text").width(width);
+			//$(target + " .select-text").width(width);
 			$(target + " .select-text").text(text);
 
 			$(target).data({
@@ -865,7 +886,6 @@
 				colorCode		: colorCode,
 				colorSubCode	: colorSubCode
 			});
-
 
 			show_View(target);
 		}
@@ -877,7 +897,7 @@
 
 			$("#view-4-product .product-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 
-			$("#view-4-product .product-name").text(productInfo[productNumber].name);
+			$("#view-4-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-4-product .product-color").text(colorName[colorCode]);
 			$("#view-4-product .product-colorSub").text(colorSubName[colorSubCode]);
 			$("#view-4-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
@@ -912,11 +932,9 @@
 			var colorSubCode	= Order.colorSubCode;
 			var sizeCode		= Order.sizeCode;
 			var size			= sizeName[sizeCode];
-
 			var now				= new Date();
 
 			$("#view-5-product-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
-
 
 			$("#view-5-date"			).text(formatDate(now, "yyyy年MM月dd日"));
 			$("#view-5-productNumber"	).text(productReNumber[productNumber][sizeCode] || productNumber);
@@ -973,18 +991,18 @@
 			</div>
 			<div id="view-1-content">
 				<div class="flex-center">
-					<div id="view-1-select0" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select1" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select2" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select3" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select4" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
+					<div id="view-1-select0" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select1" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select2" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select3" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select4" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
 				</div>
 				<div class="flex-center">
-					<div id="view-1-select5" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select6" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select7" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select8" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
-					<div id="view-1-select9" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-price"></div></div>
+					<div id="view-1-select5" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select6" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select7" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select8" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select9" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
 				</div>
 			</div>
 		</div>
