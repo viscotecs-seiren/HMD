@@ -5,27 +5,27 @@ self.addEventListener('install', (event) => {
  });
 
 self.addEventListener('activate', (event) => {
-	event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
-		cache.keys().then(function(keys) {
-			console.log("activate");
-			keys.forEach(function(request) {
-				if(request.url) {
-					if(!request.url.endsWith("_0.jpg")) {
-						cache.delete(request);
-					}
-				}
-			});
-		});
-	}).then(self.clients.claim()));
+	event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener("fetch", (event) => {
+	if(event.request.url.endsWith(".html")) {
+		caches.open(CACHE_NAME).then((cache) => {
+			cache.keys().then(function(keys) {
+				keys.forEach(function(request) {
+					if(request.url) {
+						if(!request.url.endsWith("_0.jpg")) {
+							cache.delete(request);
+						}
+					}
+				});
+			})
+		})
+	}
+
 	event.respondWith(
 		caches.open(CACHE_NAME).then(async (cache) => {
 			const response = await cache.match(event.request);
-
-			console.log(event.request);
-
 			return response || fetch(event.request).then((_response) => {
 				if(!_response || _response.status !== 200 || _response.type !== 'basic') {
 					return _response;
