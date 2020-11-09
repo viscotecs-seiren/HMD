@@ -5,7 +5,13 @@ self.addEventListener('install', (event) => {
  });
 
 self.addEventListener('activate', (event) => {
-	event.waitUntil(self.clients.claim());
+	event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
+		cache.keys().then(function(keys) {
+			keys.forEach(function(request, index, array) {
+				console.log(request);
+			});
+		});
+	}).then(self.clients.claim()));
 });
 
 self.addEventListener("fetch", (event) => {
