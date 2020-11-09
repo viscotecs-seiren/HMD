@@ -849,7 +849,21 @@
 			$("#view-5-logo-img").attr("src",img_logo_2);
 
 			$("#view-5-print").on("click",function(){window.print();return false;});
-			$("#view-5-exit").on("click",function(){change_View("#view-5", "#view-0");return false;});
+			$("#view-5-exit").on("click",function(){exit_view();return false;});
+		}
+
+		function exit_view() {
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.getRegistrations().then(registrations => {
+					for (let registration of registrations) {
+						registration.unregister();
+					}
+				});
+				window.location.reload();
+			}
+			else {
+				change_View("#view-5", "#view-0");
+			}
 		}
 
 		function set_View_1_Product(target, productNumber, colorCode, colorSubCode, width) {
