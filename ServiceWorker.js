@@ -5,13 +5,14 @@ self.addEventListener('install', (event) => {
  });
 
 self.addEventListener('activate', (event) => {
-	console.log("a");
 	event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
-		console.log("b");
 		cache.keys().then(function(keys) {
-			console.log("c");
-			keys.forEach(function(request, index, array) {
-				console.log(request);
+			keys.forEach(function(request) {
+				if(request.url) {
+					if(!request.url.endsWith("_0.jpg")) {
+						cache.delete(request);
+					}
+				}
 			});
 		});
 	}).then(self.clients.claim()));
