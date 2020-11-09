@@ -24,6 +24,8 @@ self.addEventListener("fetch", (event) => {
 		caches.open(CACHE_NAME).then(async (cache) => {
 			const response = await cache.match(event.request);
 
+			console.log(event.request);
+
 			return response || fetch(event.request).then((_response) => {
 				if(!_response || _response.status !== 200 || _response.type !== 'basic') {
 					return _response;
