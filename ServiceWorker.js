@@ -40,7 +40,6 @@ self.addEventListener("message", (event) => {
 	if(event.data["command"] && event.data["command"] === "clearCache") {
 		event.waitUntil(
 			event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
-				console.log("clearc Cache");
 				cache.keys().then(function(keys) {
 					keys.forEach(function(request) {
 						if(request.url) {
