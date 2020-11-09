@@ -854,9 +854,6 @@
 
 		function exit_view() {
 			if ('serviceWorker' in navigator) {
-				var controller = navigator.serviceWorker.controller;
-				controller.postMessage({"command":"clearCache"});
-
 				navigator.serviceWorker.getRegistrations().then(registrations => {
 					for (let registration of registrations) {
 						registration.unregister();

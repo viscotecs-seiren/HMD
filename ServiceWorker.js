@@ -7,6 +7,7 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
 	event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
 		cache.keys().then(function(keys) {
+			console.log("activate");
 			keys.forEach(function(request) {
 				if(request.url) {
 					if(!request.url.endsWith("_0.jpg")) {
