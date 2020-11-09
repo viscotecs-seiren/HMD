@@ -1,10 +1,14 @@
 const CACHE_NAME = 'HMD_CACHE';
 
 self.addEventListener('install', (event) => {
+	console.log("SW Installed");
+
 	event.waitUntil(self.skipWaiting());
- });
+});
 
 self.addEventListener('activate', (event) => {
+	console.log("SW Activate");
+
 	event.waitUntil(self.clients.claim());
 });
 
