@@ -597,14 +597,14 @@
 			{"productNumber":"4100083", "productName":"2021SS-COC-B", "colorCode":"02", "colorSubCode":"48", "productReleaseDate":"2020/12/4"}
 		];
 
-		var productDefault = {
-			"4100082":{color:"01", "01":{colorSub:"36"}, "02":{colorSub:"39"}},
-			"4100083":{color:"02", "01":{colorSub:"36"}, "02":{colorSub:"48"}}
-		};
-
 		var productInfo = {
 			"4100082":{	name:"Aラインワンピース"	, price:49000, size: "7～13号",},
 			"4100083" :{name:"Iラインワンピース"	, price:49000, size: "7～13号",},
+		};
+
+		var productDefault = {
+			"4100082":{color:"01", "01":{colorSub:"36"}, "02":{colorSub:"39"}},
+			"4100083":{color:"02", "01":{colorSub:"36"}, "02":{colorSub:"48"}}
 		};
 
 		var products = {
@@ -667,6 +667,13 @@
 		}
 
 		function change_View(view_hide,view_show) {
+			if(view_show === "#view-0"){
+				if ('serviceWorker' in navigator) {
+					var controller = navigator.serviceWorker.controller;
+					controller.postMessage({"command":"clearCache"});
+				}
+			}
+
 			$(view_hide).hide();
 			$(view_show).show();
 		}
