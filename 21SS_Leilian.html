@@ -743,6 +743,9 @@
 		$(document).ready(function(){
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('./ServiceWorker.js').then(()=>{},()=>{});
+
+				var controller = navigator.serviceWorker.controller;
+				controller.postMessage({"command":"clearCache"});
 			}
 
 			init_View_0();
