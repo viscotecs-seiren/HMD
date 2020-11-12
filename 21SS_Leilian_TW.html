@@ -605,16 +605,17 @@
 		];
 
 		var productInfo = {
-			"0100759":{name:"フロントオープンフレア"	, price:70000, size: "7～17+号",	},
-			"0100760":{name:"Iライン レギュラー"		, price:69000, size: "7～17+号",	},
-			"0100761":{name:"Iライン ショート"			, price:69000, size: "7～17+号",	},
-			"0100762":{name:"Iライン ロング"			, price:69000, size: "7～17+号",	},
-			"0100763":{name:"コクーン"					, price:70000, size: "7～17+号",	},
-			"0100764":{name:"コクーン"					, price:73000, size: "7～17+号",	},
-			"0100765":{name:"Vフロントオープン"			, price:72000, size: "7～17+号",	},
-			"0100766":{name:"Vフロントオープン"			, price:75000, size: "7～17+号",	},
-			"0100767":{name:"ウエストシャーリング"		, price:72000, size: "7～17+号",	},
-			"0100768":{name:"マテリアルミックス"		, price:70000, size: "7～17+号",	}
+			"0100766":{name:"V領前開襟長袖洋裝"		, priceText:"NT$26,000", size: "7～17+号",	},
+			"0100764":{name:"直筒七分袖洋裝"		, priceText:"NT$24,700", size: "7～17+号",	},
+			"0100767":{name:"腰部抽皺垂墜洋裝"		, priceText:"NT$25,300", size: "7～17+号",	},
+			"0100768":{name:"短袖拼接洋裝"			, priceText:"NT$24,900", size: "7～17+号",	},
+			"0100759":{name:"前開襟飄逸洋裝	"		, priceText:"NT$24,100", size: "7～17+号",	},
+
+			"0100765":{name:"V領前開襟長袖洋裝"		, priceText:"NT$25,300", size: "7～17+号",	},
+			"0100763":{name:"直筒七分袖洋裝"		, priceText:"NT$23,600", size: "7～17+号",	},
+			"0100760":{name:"直筒中長洋裝"			, priceText:"NT$23,900", size: "7～17+号",	},
+			"0100761":{name:"直筒短洋裝"			, priceText:"NT$23,900", size: "7～17+号",	},
+			"0100762":{name:"直筒長洋裝"			, priceText:"NT$23,900", size: "7～17+号",	}
 		};
 
 		var productDefault = {
@@ -697,35 +698,35 @@
 		};
 
 		var colorName = {
-			"01":"ボタニカル",
-			"02":"ペーズリー",
-			"03":"ジオメトリック",
-			"04":"チェック",
-			"08":"リバティ フラワー",
-			"09":"リバティ ボタニカル",
-			"10":"無地",
+			"01":"花草植卉",
+			"02":"變形蟲",
+			"03":"幾何",
+			"04":"格紋",
+			"08":"Liberty花朵",
+			"09":"Liberty花草植卉",
+			"10":"純色",
 		};
 
 		var colorSubName = {
-			"35":"ブルー",
-			"44":"グリーン",
-			"75":"レッド",
-			"34":"ブルー",
-			"46":"グリーン",
-			"72":"ピンク",
-			"73":"ピンク",
-			"91":"ホワイト",
-			"99":"ブラック",
-			"37":"ブルー",
-			"88":"ブラウン",
-			"92":"ホワイト",
-			"39":"ネイビー",
-			"47":"カーキ",
-			"71":"ピンク",
-			"84":"キャメル",
-			"98":"ブラック",
-			"42":"グリーン",
-			"36":"ブルー",
+			"35":"藍",
+			"44":"綠",
+			"75":"紅",
+			"34":"藍",
+			"46":"綠",
+			"72":"粉",
+			"73":"粉",
+			"91":"白",
+			"99":"黑",
+			"37":"藍",
+			"88":"棕",
+			"92":"白",
+			"39":"深藍",
+			"47":"卡其",
+			"71":"粉",
+			"84":"棕",
+			"98":"黑",
+			"42":"綠",
+			"36":"藍",
 		};
 
 		var sizeName = {
@@ -872,7 +873,7 @@
 			$(target + " .select-size").text(productInfo[productNumber].size);
 			$(target + " .select-name").text(productInfo[productNumber].name);
 			$(target + " .select-number").text(productNumber.slice(-4));
-			$(target + " .select-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$(target + " .select-price").text(productInfo[productNumber].priceText);
 
 			$(target).data({
 				productNumber	: productNumber,
@@ -906,7 +907,7 @@
 			$("#view-2-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-2-product .product-color").text(colorName[colorCode]);
 			$("#view-2-product .product-colorSub").text(colorSubName[colorSubCode]);
-			$("#view-2-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$("#view-2-product .product-price").text(productInfo[productNumber].priceText);
 
 			$("#view-2-select-design").data(product);
 			$("#view-2-select-color").data(product);
@@ -1022,7 +1023,7 @@
 			$("#view-4-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-4-product .product-color").text(colorName[colorCode]);
 			$("#view-4-product .product-colorSub").text(colorSubName[colorSubCode]);
-			$("#view-4-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$("#view-4-product .product-price").text(productInfo[productNumber].priceText);
 
 			$("#view-4").find(".cell-size-select").removeClass("cell-size-select");
 			$("#view-4-product .product-size").text("");
@@ -1066,7 +1067,7 @@
 			$("#view-5-product"			).text(productInfo[productNumber].name);
 			$("#view-5-size"			).text(size + " 号");
 			$("#view-5-color"			).text(colorSubName[colorSubCode] + "(" + colorCode + "-" + colorSubCode + ")");
-			$("#view-5-price"			).text(productInfo[productNumber].price.toLocaleString() + "円 + 税");
+			$("#view-5-price"			).text(productInfo[productNumber].priceText);
 
 			var message = `HMD000,${formatDate(now, "yyyyMMddHHmmss")},0000,${productNumber},${size},${colorCode},${colorSubCode},${sizeCode}`;
 			var qrData = `line://oaMessage/@360zwmzq/${encodeURI(btoa(message))}`
@@ -1217,7 +1218,7 @@
 								</div>
 							</div>
 							<div class="product-order">
-								<div id="view-2-select-order" class="order-select">オーダー手続き</div>
+								<div id="view-2-select-order" class="order-select">選擇尺寸</div>
 							</div>
 						</div>
 					</div>
@@ -1374,19 +1375,19 @@
 										<tr class="row-36">
 											<td class="col-100"><div>貨號</div></td>
 											<td class="col-200"><div id="view-5-productNumber"></div></td>
-											<td class="col-100"><div>品名</div></td>
+											<td class="col-100"><div>設計</div></td>
 											<td class="col-200"><div id="view-5-product"></div></td>
 										</tr>
 										<tr class="row-36">
 											<td class="col-100"><div>尺寸</div></td>
 											<td class="col-200"><div id="view-5-size"></div></td>
-											<td class="col-100"><div>色</div></td>
+											<td class="col-100"><div>顏色</div></td>
 											<td class="col-200"><div id="view-5-color"></div></td>
 										</tr>
 										<tr class="row-36">
 											<td class="col-100"><div></div></td>
 											<td class="col-200"><div></div></td>
-											<td class="col-100"><div>本体価格</div></td>
+											<td class="col-100"><div>價格</div></td>
 											<td class="col-200"><div id="view-5-price"></div></td>
 										</tr>
 										<tr class="row-48">
