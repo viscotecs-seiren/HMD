@@ -609,16 +609,16 @@
 		];
 
 		var productInfo = {
-			"0100759":{name:"フロントオープンフレア"	, price:70000, size: "7～17+号",	},
-			"0100760":{name:"Iライン レギュラー"		, price:69000, size: "7～17+号",	},
-			"0100761":{name:"Iライン ショート"			, price:69000, size: "7～17+号",	},
-			"0100762":{name:"Iライン ロング"			, price:69000, size: "7～17+号",	},
-			"0100763":{name:"コクーン"					, price:70000, size: "7～17+号",	},
-			"0100764":{name:"コクーン"					, price:73000, size: "7～17+号",	},
-			"0100765":{name:"Vフロントオープン"			, price:72000, size: "7～17+号",	},
-			"0100766":{name:"Vフロントオープン"			, price:75000, size: "7～17+号",	},
-			"0100767":{name:"ウエストシャーリング"		, price:72000, size: "7～17+号",	},
-			"0100768":{name:"マテリアルミックス"		, price:70000, size: "7～17+号",	}
+			"0100759":{name:"フロントオープンフレア"	, price:77000, size: "7～17+号",	},
+			"0100760":{name:"Iライン レギュラー"		, price:75900, size: "7～17+号",	},
+			"0100761":{name:"Iライン ショート"			, price:75900, size: "7～17+号",	},
+			"0100762":{name:"Iライン ロング"			, price:75900, size: "7～17+号",	},
+			"0100763":{name:"コクーン"					, price:77000, size: "7～17+号",	},
+			"0100764":{name:"コクーン"					, price:80300, size: "7～17+号",	},
+			"0100765":{name:"Vフロントオープン"			, price:79200, size: "7～17+号",	},
+			"0100766":{name:"Vフロントオープン"			, price:82500, size: "7～17+号",	},
+			"0100767":{name:"ウエストシャーリング"		, price:79200, size: "7～17+号",	},
+			"0100768":{name:"マテリアルミックス"		, price:77000, size: "7～17+号",	}
 		};
 
 		var productDefault = {
@@ -877,7 +877,7 @@
 			$(target + " .select-size").text(productInfo[productNumber].size);
 			$(target + " .select-name").text(productInfo[productNumber].name);
 			$(target + " .select-number").text(productNumber.slice(-4));
-			$(target + " .select-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$(target + " .select-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税込)");
 
 			$(target).data({
 				productNumber	: productNumber,
@@ -911,7 +911,7 @@
 			$("#view-2-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-2-product .product-color").text(colorName[colorCode]);
 			$("#view-2-product .product-colorSub").text(colorSubName[colorSubCode]);
-			$("#view-2-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$("#view-2-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税込)");
 
 			$("#view-2-select-design").data(product);
 			$("#view-2-select-color").data(product);
@@ -1027,7 +1027,7 @@
 			$("#view-4-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-4-product .product-color").text(colorName[colorCode]);
 			$("#view-4-product .product-colorSub").text(colorSubName[colorSubCode]);
-			$("#view-4-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$("#view-4-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税込)");
 
 			$("#view-4").find(".cell-size-select").removeClass("cell-size-select");
 			$("#view-4-product .product-size").text("");
@@ -1071,7 +1071,7 @@
 			$("#view-5-product"			).text(productInfo[productNumber].name);
 			$("#view-5-size"			).text(size + " 号");
 			$("#view-5-color"			).text(colorSubName[colorSubCode] + "(" + colorCode + "-" + colorSubCode + ")");
-			$("#view-5-price"			).text(productInfo[productNumber].price.toLocaleString() + "円 + 税");
+			$("#view-5-price"			).text(productInfo[productNumber].price.toLocaleString() + "円(税込)");
 
 			var message = `HMD000,${formatDate(now, "yyyyMMddHHmmss")},0000,${productNumber},${size},${colorCode},${colorSubCode},${sizeCode}`;
 			var qrData = `line://oaMessage/@360zwmzq/${encodeURI(btoa(message))}`
@@ -1391,7 +1391,7 @@
 										<tr class="row-36">
 											<td class="col-100"><div></div></td>
 											<td class="col-200"><div></div></td>
-											<td class="col-100"><div>本体価格</div></td>
+											<td class="col-100"><div>価格</div></td>
 											<td class="col-200"><div id="view-5-price"></div></td>
 										</tr>
 										<tr class="row-48">

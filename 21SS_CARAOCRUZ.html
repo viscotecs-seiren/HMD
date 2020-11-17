@@ -600,8 +600,8 @@
 		];
 
 		var productInfo = {
-			"4100082":{	name:"Aラインワンピース"	, price:49000, size: "7～13号",},
-			"4100083" :{name:"Iラインワンピース"	, price:49000, size: "7～13号",},
+			"4100082":{	name:"Aラインワンピース"	, price:53900, size: "7～13号",},
+			"4100083" :{name:"Iラインワンピース"	, price:53900, size: "7～13号",},
 		};
 
 		var productDefault = {
@@ -723,6 +723,7 @@
 			$("#product-img-mini1").on("click",function(event){set_View_2_Image($(event.currentTarget).data());return false;});
 			$("#product-img-mini2").on("click",function(event){set_View_2_Image($(event.currentTarget).data());return false;});
 			$("#product-img-mini3").on("click",function(event){set_View_2_Image($(event.currentTarget).data());return false;});
+			$("#product-img-mini4").on("click",function(event){set_View_2_Image($(event.currentTarget).data());return false;});
 
 			$("#view-2-select-design"	).on("click",function(event){set_View_3_Products("design"	,$(event.currentTarget).data());return false;});
 			$("#view-2-select-color"	).on("click",function(event){set_View_3_Products("color"	,$(event.currentTarget).data());return false;});
@@ -784,7 +785,7 @@
 			$(target + " .select-size").text(productInfo[productNumber].size);
 			$(target + " .select-name").text(productInfo[productNumber].name);
 			$(target + " .select-number").text(productNumber.slice(-4));
-			$(target + " .select-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$(target + " .select-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税込)");
 
 			$(target).data({
 				productNumber	: productNumber,
@@ -802,23 +803,26 @@
 			$("#product-img-mini1").empty().append("<img class='product-img-mini'/>");
 			$("#product-img-mini2").empty().append("<img class='product-img-mini'/>");
 			$("#product-img-mini3").empty().append("<img class='product-img-mini'/>");
+			$("#product-img-mini4").empty().append("<img class='product-img-mini'/>");
 
 			$("#product-img-mini0 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 			$("#product-img-mini1 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "1"));
 			$("#product-img-mini2 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "2"));
 			$("#product-img-mini3 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "3"));
+			$("#product-img-mini4 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "4"));
 
 			$("#product-img-mini0").data(Object.assign({}, product, {face: "0"}));
 			$("#product-img-mini1").data(Object.assign({}, product, {face: "1"}));
 			$("#product-img-mini2").data(Object.assign({}, product, {face: "2"}));
 			$("#product-img-mini3").data(Object.assign({}, product, {face: "3"}));
+			$("#product-img-mini4").data(Object.assign({}, product, {face: "4"}));
 
 			set_View_2_Image(Object.assign({}, product, {face: "0"}));
 
 			$("#view-2-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-2-product .product-color").text(colorName[colorCode]);
 			$("#view-2-product .product-colorSub").text(colorSubName[colorSubCode]);
-			$("#view-2-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$("#view-2-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税込)");
 
 			$("#view-2-select-design").data(product);
 			$("#view-2-select-color").data(product);
@@ -934,7 +938,7 @@
 			$("#view-4-product .product-name").text(`${productInfo[productNumber].name} ${productNumber.slice(-4)}`);
 			$("#view-4-product .product-color").text(colorName[colorCode]);
 			$("#view-4-product .product-colorSub").text(colorSubName[colorSubCode]);
-			$("#view-4-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税別)");
+			$("#view-4-product .product-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税込)");
 
 			$("#view-4").find(".cell-size-select").removeClass("cell-size-select");
 			$("#view-4-product .product-size").text("");
@@ -975,7 +979,7 @@
 			$("#view-5-product"			).text(productInfo[productNumber].name);
 			$("#view-5-size"			).text(size + " 号");
 			$("#view-5-color"			).text(colorSubName[colorSubCode] + "(" + colorCode + "-" + colorSubCode + ")");
-			$("#view-5-price"			).text(productInfo[productNumber].price.toLocaleString() + "円 + 税");
+			$("#view-5-price"			).text(productInfo[productNumber].price.toLocaleString() + "円(税込)");
 
 			var message = `HMD000,${formatDate(now, "yyyyMMddHHmmss")},0000,${productNumber},${size},${colorCode},${colorSubCode},${sizeCode}`;
 			var qrData = `line://oaMessage/@360zwmzq/${encodeURI(btoa(message))}`
@@ -1063,6 +1067,9 @@
 							</div>
 							<div class="product-img-cell">
 								<div id="product-img-mini3"><img  class="product-img-mini"/></div>
+							</div>
+							<div class="product-img-cell">
+								<div id="product-img-mini4"><img  class="product-img-mini"/></div>
 							</div>
 						</div>
 						<div id="view-2-product-img">
@@ -1290,7 +1297,7 @@
 										<tr class="row-36">
 											<td class="col-100"><div></div></td>
 											<td class="col-200"><div></div></td>
-											<td class="col-100"><div>本体価格</div></td>
+											<td class="col-100"><div>価格</div></td>
 											<td class="col-200"><div id="view-5-price"></div></td>
 										</tr>
 										<tr class="row-48">
