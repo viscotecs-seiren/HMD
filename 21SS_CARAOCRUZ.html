@@ -723,7 +723,6 @@
 			$("#product-img-mini1").on("click",function(event){set_View_2_Image($(event.currentTarget).data());return false;});
 			$("#product-img-mini2").on("click",function(event){set_View_2_Image($(event.currentTarget).data());return false;});
 			$("#product-img-mini3").on("click",function(event){set_View_2_Image($(event.currentTarget).data());return false;});
-			$("#product-img-mini4").on("click",function(event){set_View_2_Image($(event.currentTarget).data());return false;});
 
 			$("#view-2-select-design"	).on("click",function(event){set_View_3_Products("design"	,$(event.currentTarget).data());return false;});
 			$("#view-2-select-color"	).on("click",function(event){set_View_3_Products("color"	,$(event.currentTarget).data());return false;});
@@ -803,19 +802,16 @@
 			$("#product-img-mini1").empty().append("<img class='product-img-mini'/>");
 			$("#product-img-mini2").empty().append("<img class='product-img-mini'/>");
 			$("#product-img-mini3").empty().append("<img class='product-img-mini'/>");
-			$("#product-img-mini4").empty().append("<img class='product-img-mini'/>");
 
 			$("#product-img-mini0 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 			$("#product-img-mini1 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "1"));
 			$("#product-img-mini2 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "2"));
 			$("#product-img-mini3 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "3"));
-			$("#product-img-mini4 .product-img-mini").attr("src",get_Image(productNumber, colorCode, colorSubCode, "4"));
 
 			$("#product-img-mini0").data(Object.assign({}, product, {face: "0"}));
 			$("#product-img-mini1").data(Object.assign({}, product, {face: "1"}));
 			$("#product-img-mini2").data(Object.assign({}, product, {face: "2"}));
 			$("#product-img-mini3").data(Object.assign({}, product, {face: "3"}));
-			$("#product-img-mini4").data(Object.assign({}, product, {face: "4"}));
 
 			set_View_2_Image(Object.assign({}, product, {face: "0"}));
 
@@ -1019,7 +1015,7 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-start">Touch to Start</div>
-			<div id="view-0-version">1116</div>
+			<div id="view-0-version">1117</div>
 		</div>
 		<div id="view-1">
 			<div class="header">
@@ -1067,9 +1063,6 @@
 							</div>
 							<div class="product-img-cell">
 								<div id="product-img-mini3"><img  class="product-img-mini"/></div>
-							</div>
-							<div class="product-img-cell">
-								<div id="product-img-mini4"><img  class="product-img-mini"/></div>
 							</div>
 						</div>
 						<div id="view-2-product-img">
