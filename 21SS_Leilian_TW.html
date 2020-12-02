@@ -1061,6 +1061,7 @@
 			var sizeCode		= Order.sizeCode;
 			var size			= sizeName[sizeCode];
 			var now				= new Date();
+			var sizeId			= size.replace("+","");
 
 			$("#view-5-product-img"		).attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 
@@ -1071,7 +1072,7 @@
 			$("#view-5-color"			).text(colorSubName[colorSubCode] + "(" + colorCode + "-" + colorSubCode + ")");
 			$("#view-5-price"			).text(productInfo[productNumber].priceText);
 
-			var message = `HMD000,${formatDate(now, "yyyyMMddHHmmss")},01,0000,${productNumber},${size},${colorCode},${colorSubCode},${sizeCode}`;
+			var message = `HMD000,${formatDate(now, "yyyyMMddHHmmss")},01,0000,${productNumber},${size},${colorCode},${colorSubCode},${sizeId}`;
 			var qrData = `line://oaMessage/@360zwmzq/${encodeURI(btoa(message))}`
 			// テスト用　var qrData = `line://oaMessage/@379crolz/${encodeURI(btoa(message))}`;
 
@@ -1109,7 +1110,7 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-start">Touch to Start</div>
-			<div id="view-0-version">1117</div>
+			<div id="view-0-version">1204</div>
 		</div>
 		<div id="view-1">
 			<div class="header">

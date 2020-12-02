@@ -1063,6 +1063,7 @@
 			var sizeCode		= Order.sizeCode;
 			var size			= sizeName[sizeCode];
 			var now				= new Date();
+			var sizeId			= size.replace("+","");
 
 			$("#view-5-product-img"		).attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 
@@ -1073,7 +1074,7 @@
 			$("#view-5-color"			).text(colorSubName[colorSubCode] + "(" + colorCode + "-" + colorSubCode + ")");
 			$("#view-5-price"			).text(productInfo[productNumber].price.toLocaleString() + "円(税込)");
 
-			var message = `HMD000,${formatDate(now, "yyyyMMddHHmmss")},01,0000,${productNumber},${size},${colorCode},${colorSubCode},${sizeCode}`;
+			var message = `HMD000,${formatDate(now, "yyyyMMddHHmmss")},01,0000,${productNumber},${size},${colorCode},${colorSubCode},${sizeId}`;
 			var qrData = `line://oaMessage/@360zwmzq/${encodeURI(btoa(message))}`
 			// テスト用　var qrData = `line://oaMessage/@379crolz/${encodeURI(btoa(message))}`;
 
