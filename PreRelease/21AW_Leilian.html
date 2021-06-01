@@ -163,6 +163,11 @@
 		.view-1-select .select-price {
 			text-align: center;
 		}
+		.view-1-select .select-mark {
+			text-align: center;
+			white-space: nowrap;
+			font-size: 10px;
+		}
 
 		#view-2 {
 			position: absolute;
@@ -626,19 +631,19 @@
 		};
 
 		var productList_A = [
-			{"productNumber":"0102891" ,"productName":"ロールカラーAライン 2891"	,"colorCode":"01" ,"colorSubCode":"85" ,"productReleaseDate":"2021/06/03"},
-			{"productNumber":"0102889" ,"productName":"コンビネーション 2889"		,"colorCode":"02" ,"colorSubCode":"39" ,"productReleaseDate":"2021/06/03"},
-			{"productNumber":"0102890" ,"productName":"ウエストシャーリング 2890"	,"colorCode":"05" ,"colorSubCode":"98" ,"productReleaseDate":"2021/06/03"},
-			{"productNumber":"0102888" ,"productName":"ボウタイ 2888"				,"colorCode":"03" ,"colorSubCode":"48" ,"productReleaseDate":"2021/06/03"},
-			{"productNumber":"0102893" ,"productName":"Iライン レギュラー 2893"		,"colorCode":"02" ,"colorSubCode":"88" ,"productReleaseDate":"2021/06/03"},
-			{"productNumber":"0103175" ,"productName":"Iライン ショート 3175"		,"colorCode":"02" ,"colorSubCode":"39" ,"productReleaseDate":"2021/06/03"},
-			{"productNumber":"0103176" ,"productName":"Iライン ロング 3176"			,"colorCode":"02" ,"colorSubCode":"99" ,"productReleaseDate":"2021/06/03"},
-			{"productNumber":"0102892" ,"productName":"フロントオープンフレア 2892"	,"colorCode":"04" ,"colorSubCode":"28" ,"productReleaseDate":"2021/06/03"},
+			{"productNumber":"0102891" ,"productName":"ロールカラーAライン 2891"	,"colorCode":"01" ,"colorSubCode":"85" ,"productReleaseDate":"2021/06/03","mark_001":"ツィーディーブッチャー"	},
+			{"productNumber":"0102889" ,"productName":"コンビネーション 2889"		,"colorCode":"02" ,"colorSubCode":"39" ,"productReleaseDate":"2021/06/03","mark_001":"ツィーディーブッチャー"	},
+			{"productNumber":"0102890" ,"productName":"ウエストシャーリング 2890"	,"colorCode":"05" ,"colorSubCode":"98" ,"productReleaseDate":"2021/06/03","mark_001":"アンティークデシン"		},
+			{"productNumber":"0102888" ,"productName":"ボウタイ 2888"				,"colorCode":"03" ,"colorSubCode":"48" ,"productReleaseDate":"2021/06/03","mark_001":"アンティークデシン"		},
+			{"productNumber":"0102892" ,"productName":"フロントオープンフレア 2892"	,"colorCode":"04" ,"colorSubCode":"28" ,"productReleaseDate":"2021/06/03","mark_001":"ツィーディーブッチャー"	},
+			{"productNumber":"0102893" ,"productName":"Iライン レギュラー 2893"		,"colorCode":"02" ,"colorSubCode":"88" ,"productReleaseDate":"2021/06/03","mark_001":"ツィーディーブッチャー"	},
+			{"productNumber":"0103175" ,"productName":"Iライン ショート 3175"		,"colorCode":"02" ,"colorSubCode":"39" ,"productReleaseDate":"2021/06/03","mark_001":"ツィーディーブッチャー"	},
+			{"productNumber":"0103176" ,"productName":"Iライン ロング 3176"			,"colorCode":"02" ,"colorSubCode":"99" ,"productReleaseDate":"2021/06/03","mark_001":"ツィーディーブッチャー"	},
 		];
 
 		var productList_B = [
-			{"productNumber":"0103040" ,"productName":"コンビネーションチュニック 3040","colorCode":"04" ,"colorSubCode":"38" ,"productReleaseDate":"2021/06/03"},
-			{"productNumber":"0103036" ,"productName":"コンビネーションチュニック 3036","colorCode":"01" ,"colorSubCode":"78" ,"productReleaseDate":"2021/06/03"},
+			{"productNumber":"0103040" ,"productName":"コンビネーションチュニック 3040","colorCode":"04" ,"colorSubCode":"38" ,"productReleaseDate":"2021/06/03","mark_001":"アンティークデシン"		},
+			{"productNumber":"0103036" ,"productName":"コンビネーションチュニック 3036","colorCode":"01" ,"colorSubCode":"78" ,"productReleaseDate":"2021/06/03","mark_001":"ツィーディーブッチャー"	},
 		];
 
 		var productInfo = {
@@ -913,10 +918,11 @@
 			for( var i=0; i < 14; i++) {
 				if(list[i]) {
 					var productNumber	= list[i].productNumber;
+					var productMark		= list[i].mark_001;
 					var colorCode		= list[i].colorCode;
 					var colorSubCode	= list[i].colorSubCode;
 
-					set_View_1_Product("#view-1-select"+i, productNumber, colorCode, colorSubCode, width, list);
+					set_View_1_Product("#view-1-select"+i, productNumber, productMark, colorCode, colorSubCode, width, list);
 
 					$("#view-1-select"+i).on("click",function(event){select_View_2_Product($(event.currentTarget).data());return false;});
 					show_View("#view-1-select"+i);
@@ -927,13 +933,14 @@
 			};
 		}
 
-		function set_View_1_Product(target, productNumber, colorCode, colorSubCode, width, list) {
+		function set_View_1_Product(target, productNumber, productMark, colorCode, colorSubCode, width, list) {
 			$(target + " .select-img").width(width);
 
 			$(target + " .select-img").attr("src",get_Image(productNumber, colorCode, colorSubCode, "0"));
 			$(target + " .select-size").text(productInfo[productNumber].size);
 			$(target + " .select-name").text(productInfo[productNumber].name);
 			$(target + " .select-number").text(productNumber.slice(-4));
+			$(target + " .select-mark").text(productMark);
 			$(target + " .select-price").text("￥" + productInfo[productNumber].price.toLocaleString() + "(税込)");
 
 			$(target).data({
@@ -1201,22 +1208,22 @@
 					<div id="view-1-switch1" class="view-1-switch"><div class="switch-frame"><div class="switch-name">チュニック</div></div></div>
 				</div>
 				<div class="flex-center">
-					<div id="view-1-select0" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select1" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select2" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select3" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select4" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select0" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select1" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select2" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select3" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select4" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
 				</div>
 				<div class="flex-center">
-					<div id="view-1-select5" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select6" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select7"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select8"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select9"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select10" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select11" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select12" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
-					<div id="view-1-select13" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div></div>
+					<div id="view-1-select5"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select6"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select7"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select8"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select9"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select10" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select11" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select12" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select13" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
 				</div>
 			</div>
 		</div>
