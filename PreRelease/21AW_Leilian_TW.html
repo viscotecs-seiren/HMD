@@ -241,6 +241,11 @@
 			display: flex;
 		}
 
+		.product-frame .size-selector {
+			width: 408px;
+			display: flex;
+			flex-wrap: wrap;
+		}
 		.product-frame .cell-size {
 			width: 80px;
 			height: 40px;
@@ -663,13 +668,13 @@
 			"0105183":{name:"A字剪裁"					, priceText:"NT$18,800", size: "7～13号",},
 			"0105184":{name:"合身&飄逸"					, priceText:"NT$18,800", size: "7～13号",},
 			"0102891":{name:"圓翻領A字洋裝"				, priceText:"NT$22,700", size: "7～17+号",},
-			"0102889":{name:"連身洋裝"					, priceText:"NT$26,500", size: "7～17+号",},
+			"0102889":{name:"連身洋裝"					, priceText:"NT$26,500", size: "5～17+号",},
 			"0102890":{name:"腰部抽皺洋裝"				, priceText:"NT$25,000", size: "7～17+号",},
 			"0102888":{name:"綁帶洋裝"					, priceText:"NT$26,500", size: "7～17+号",},
 			"0102893":{name:"直筒洋裝 R一般衣長"		, priceText:"NT$26,500", size: "7～17+号",},
 			"0103175":{name:"直筒洋裝 R短款"			, priceText:"NT$26,500", size: "7～17+号",},
 			"0103176":{name:"直筒洋裝 R長款"			, priceText:"NT$26,500", size: "7～17+号",},
-			"0102892":{name:"前開襟飄逸洋裝 R一般衣長"	, priceText:"NT$26,900", size: "7～17+号",},
+			"0102892":{name:"前開襟飄逸洋裝 R一般衣長"	, priceText:"NT$26,900", size: "5～17+号",},
 			"0103040":{name:"拼接長版上衣"				, priceText:"NT$17,300", size: "7～17+号",},
 			"0103036":{name:"拼接長版上衣"				, priceText:"NT$17,700", size: "7～17+号",},
 			"4100463":{name:"A字剪裁"					, priceText:"NT$18,800", size: "7～13号",},
@@ -677,22 +682,22 @@
 		};
 
 		var productSize = {
-			"0105182":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0105185":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0105183":{"07":true, "09":true, "11":true, "13":true, "15":false, "16":false, "17":false},
-			"0105184":{"07":true, "09":true, "11":true, "13":true, "15":false, "16":false, "17":false},
-			"0102892":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0102893":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0103175":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0103176":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0102891":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0102889":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0102890":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0102888":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0103040":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"0103036":{"07":true, "09":true, "11":true, "13":true, "15":true, "16":true, "17":true},
-			"4100463":{"07":true, "09":true, "11":true, "13":true, "15":false, "16":false, "17":false},
-			"4100464":{"07":true, "09":true, "11":true, "13":true, "15":false, "16":false, "17":false},
+			"0105182":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0105185":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0105183":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":false, "16":false, "17":false},
+			"0105184":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":false, "16":false, "17":false},
+			"0102892":{"05":true , "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0102893":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0103175":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0103176":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0102891":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0102889":{"05":true , "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0102890":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0102888":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0103040":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"0103036":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":true , "16":true , "17":true},
+			"4100463":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":false, "16":false, "17":false},
+			"4100464":{"05":false, "07":true, "09":true, "11":true, "13":true, "15":false, "16":false, "17":false},
 		};
 
 		var productDefault = {
@@ -800,12 +805,12 @@
 			"0105185":{"15":"1105185", "16":"1105185", "17":"1105185"},
 			"0105183":{"15":"1105183", "16":"1105183", "17":"1105183"},
 			"0105184":{"15":"1105184", "16":"1105184", "17":"1105184"},
-			"0102892":{"15":"1102892", "16":"1102892", "17":"1102892"},
+			"0102892":{"15":"1102892", "16":"1102892", "17":"1102892", "05":"0105506"},
 			"0102893":{"15":"1102893", "16":"1102893", "17":"1102893"},
 			"0103175":{"15":"1103175", "16":"1103175", "17":"1103175"},
 			"0103176":{"15":"1103176", "16":"1103176", "17":"1103176"},
 			"0102891":{"15":"1102891", "16":"1102891", "17":"1102891"},
-			"0102889":{"15":"1102889", "16":"1102889", "17":"1102889"},
+			"0102889":{"15":"1102889", "16":"1102889", "17":"1102889", "05":"0105505"},
 			"0102890":{"15":"1102890", "16":"1102890", "17":"1102890"},
 			"0102888":{"15":"1102888", "16":"1102888", "17":"1102888"},
 			"0103040":{"15":"1103040", "16":"1103040", "17":"1103040"},
@@ -847,6 +852,7 @@
 		};
 
 		var sizeName = {
+			"05":"5",
 			"07":"7",
 			"09":"9",
 			"11":"11",
@@ -940,6 +946,7 @@
 			$("#view-4-logo-img").attr("src",img_logo_2);
 			$("#view-4-back").on("click",function(){change_View("#view-4", "#view-2");return false;});
 
+			$("#view-4-product-size-05").on("click",function(event){set_View_4_size($(event.currentTarget));return false;});
 			$("#view-4-product-size-07").on("click",function(event){set_View_4_size($(event.currentTarget));return false;});
 			$("#view-4-product-size-09").on("click",function(event){set_View_4_size($(event.currentTarget));return false;});
 			$("#view-4-product-size-11").on("click",function(event){set_View_4_size($(event.currentTarget));return false;});
@@ -1162,7 +1169,7 @@
 			$("#view-4-product .product-size").text("");
 			hide_View("#view-4-order-select");
 
-			var sizeList = ["07", "09", "11", "13", "15", "16", "17"];
+			var sizeList = ["05", "07", "09", "11", "13", "15", "16", "17"];
 			for( var i=0; i < sizeList.length ; i++) {
 				var target = "#view-4-product-size-" + sizeList[i];
 
@@ -1174,6 +1181,7 @@
 				}
 			}
 
+			$("#view-4-product-size-05").data(Object.assign({}, product, {sizeCode: "05"}));
 			$("#view-4-product-size-07").data(Object.assign({}, product, {sizeCode: "07"}));
 			$("#view-4-product-size-09").data(Object.assign({}, product, {sizeCode: "09"}));
 			$("#view-4-product-size-11").data(Object.assign({}, product, {sizeCode: "11"}));
@@ -1257,7 +1265,7 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-start">Touch to Start</div>
-			<div id="view-0-version">0730</div>
+			<div id="view-0-version">0827</div>
 		</div>
 		<div id="view-1">
 			<div class="header">
@@ -1478,13 +1486,12 @@
 										<div class="product-size"></div>
 									</div>
 								</div>
-								<div class="cell-selector">
+								<div class="size-selector">
+									<div id="view-4-product-size-05" class="cell-size">5号</div>
 									<div id="view-4-product-size-07" class="cell-size">7号</div>
 									<div id="view-4-product-size-09" class="cell-size">9号</div>
 									<div id="view-4-product-size-11" class="cell-size">11号</div>
 									<div id="view-4-product-size-13" class="cell-size">13号</div>
-								</div>
-								<div class="cell-selector">
 									<div id="view-4-product-size-15" class="cell-size">13+号</div>
 									<div id="view-4-product-size-16" class="cell-size">15+号</div>
 									<div id="view-4-product-size-17" class="cell-size">17+号</div>
