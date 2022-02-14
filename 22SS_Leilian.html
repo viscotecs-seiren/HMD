@@ -120,7 +120,6 @@
 			overflow: hidden;
 			border-radius: 4px;
 			border: 1px solid #B48F00;
-			display: none;
 		}
 		.view-1-switch .switch-select {
 			background-color: #B48F00;
@@ -652,12 +651,14 @@
 		];
 
 		var productList_B = [
+			{"productNumber":"0201946" ,"productName":"チュニック 1946"                 ,"colorCode":"05" ,"colorSubCode":"83" ,"productReleaseDate":"2022/2/16","mark_001":"サンベール"}
 		];
 
 		var productList_C = [
 		];
 
 		var productInfo = {
+			"0201946":{name:"チュニック"                , price:47300, size: "7～17+号",},
 			"0200085":{name:"Vフロントオープン"			, price:77000, size: "7～17+号",},
 			"0200087":{name:"Vフロントオープン ショート", price:75900, size: "7～17+号",},
 			"0200088":{name:"Vフロントオープン"			, price:75900, size: "7～17+号",},
@@ -671,6 +672,7 @@
 		};
 
 		var productSize = {
+			"0201946":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0200085":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0200087":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0200088":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
@@ -684,6 +686,7 @@
 		};
 
 		var productDefault = {
+			"0201946":{color:"05", "04":{colorSub:"37"}, "05":{colorSub:"83"}, "06":{colorSub:"33"}},
 			"0200085":{color:"02", "01":{colorSub:"46"}, "02":{colorSub:"44"}},
 			"0200087":{color:"04", "03":{colorSub:"36"}, "04":{colorSub:"37"}, "05":{colorSub:"45"}},
 			"0200088":{color:"04", "03":{colorSub:"36"}, "04":{colorSub:"47"}, "05":{colorSub:"45"}},
@@ -697,6 +700,10 @@
 		};
 
 		var products = {
+			"0201946":{ colors:["04", "05", "06"]
+				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
+				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}
+				, "06":{ colorSubs:["33", "38", "84"], "33":true, "38":true, "84":true}},
 			"0200085":{ colors:["01", "02"]
 				, "01":{ colorSubs:["46"], "46":true}
 				, "02":{ colorSubs:["44"], "44":true}},
@@ -739,6 +746,7 @@
 		};
 
 		var productReNumber = {
+			"0201946":{"15":"1201946", "16":"1201946", "17":"1201946"},
 			"0200085":{"15":"1200085", "16":"1200085", "17":"1200085"},
 			"0200087":{"15":"1200087", "16":"1200087", "17":"1200087"},
 			"0200088":{"15":"1200088", "16":"1200088", "17":"1200088"},
@@ -1197,7 +1205,7 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-start">Touch to Start</div>
-			<div id="view-0-version">0111</div>
+			<div id="view-0-version">0216</div>
 		</div>
 		<div id="view-1">
 			<div class="header">
@@ -1212,11 +1220,11 @@
 					<div id="view-1-switch1" class="view-1-switch"><div class="switch-frame"><div class="switch-name">チュニック</div></div></div>
 				</div>
 				<div class="flex-center">
-					<div id="view-1-select0" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
-					<div id="view-1-select1" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
-					<div id="view-1-select2" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
-					<div id="view-1-select3" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
-					<div id="view-1-select4" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select0"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select1"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select2"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select3"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
+					<div id="view-1-select4"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
 				</div>
 				<div class="flex-center">
 					<div id="view-1-select5"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
@@ -1332,15 +1340,15 @@
 					<div id="view-3-title1"></div>
 					<div id="view-3-title2"></div>
 					<div class="flex-center">
-						<div id="view-3-select0" class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
-						<div id="view-3-select1" class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
-						<div id="view-3-select2" class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
-						<div id="view-3-select3" class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
-						<div id="view-3-select4" class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
+						<div id="view-3-select0"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
+						<div id="view-3-select1"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
+						<div id="view-3-select2"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
+						<div id="view-3-select3"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
+						<div id="view-3-select4"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
 					</div>
 					<div class="flex-center">
-						<div id="view-3-select5" class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
-						<div id="view-3-select6" class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
+						<div id="view-3-select5"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
+						<div id="view-3-select6"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
 						<div id="view-3-select7"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
 						<div id="view-3-select8"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
 						<div id="view-3-select9"  class="view-3-select"><div class="select-frame"><img class="select-img"/></div><div class="select-text"></div></div>
