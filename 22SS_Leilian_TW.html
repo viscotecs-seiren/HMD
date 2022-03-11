@@ -112,7 +112,7 @@
 			height: 34px;
 		}
 		.view-1-switch .switch-name {
-			width: 160px;
+			width: 180px;
 			height: 32px;
 			line-height: 32px;
 			text-align: center;
@@ -120,7 +120,6 @@
 			overflow: hidden;
 			border-radius: 4px;
 			border: 1px solid #B48F00;
-			display: none;
 		}
 		.view-1-switch .switch-select {
 			background-color: #B48F00;
@@ -652,25 +651,37 @@
 		];
 
 		var productList_B = [
+			{"productNumber":"0201812" ,"productName":"プルオーバー 1812"				,"colorCode":"08" ,"colorSubCode":"39" ,"productReleaseDate":"2022/3/9","mark_001":"雙縐"},
+			{"productNumber":"0201813" ,"productName":"イージーパンツ 1813"				,"colorCode":"08" ,"colorSubCode":"39" ,"productReleaseDate":"2022/3/9","mark_001":"雙縐"},
+			{"productNumber":"0201811" ,"productName":"ティアードチュニック 1811"		,"colorCode":"08" ,"colorSubCode":"82" ,"productReleaseDate":"2022/3/9","mark_001":"雙縐"},
+			{"productNumber":"0201946" ,"productName":"チュニック 1946"                 ,"colorCode":"05" ,"colorSubCode":"83" ,"productReleaseDate":"2022/2/16","mark_001":"蜂窩針織"}
 		];
 
 		var productList_C = [
 		];
 
 		var productInfo = {
+			"0201946":{name:"長版上衣"          , priceText:"NT$15,700", size: "7～17+号",},
+			"0201811":{name:"分層拼接長版上衣"	, priceText:"NT$15,300", size: "7～17+号",},
+			"0201812":{name:"套頭上衣"			, priceText:"NT$14,200", size: "7～17+号",},
+			"0201813":{name:"休閒褲"			, priceText:"NT$9,800" , size: "7～17+号",},
 			"0200085":{name:"V領開襟"			, priceText:"NT$25,500", size: "7～17+号",},
 			"0200087":{name:"V領開襟 R短款"		, priceText:"NT$25,200", size: "7～17+号",},
 			"0200088":{name:"V領開襟"			, priceText:"NT$25,200", size: "7～17+号",},
 			"0200089":{name:"V領開襟 R長款"		, priceText:"NT$25,200", size: "7～17+号",},
+			"0200093":{name:"拼接"				, priceText:"NT$22,600", size: "7～17+号",},
 			"0200090":{name:"直筒 R短款"		, priceText:"NT$25,200", size: "7～17+号",},
 			"0200091":{name:"直筒"				, priceText:"NT$25,200", size: "7～17+号",},
 			"0200092":{name:"直筒 R長款"		, priceText:"NT$25,200", size: "7～17+号",},
-			"0200093":{name:"拼接"				, priceText:"NT$22,600", size: "7～17+号",},
-			"0200094":{name:"無袖飄逸"			, priceText:"NT$21,500", size: "7～17+号",},
 			"0200095":{name:"抽皺飄逸"			, priceText:"NT$21,500", size: "7～17+号",},
+			"0200094":{name:"無袖飄逸"			, priceText:"NT$21,500", size: "7～17+号",},
 		};
 
 		var productSize = {
+			"0201946":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
+			"0201811":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
+			"0201812":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
+			"0201813":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0200085":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0200087":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0200088":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
@@ -684,6 +695,10 @@
 		};
 
 		var productDefault = {
+			"0201946":{color:"05", "04":{colorSub:"37"}, "05":{colorSub:"83"}, "06":{colorSub:"33"}},
+			"0201811":{color:"04", "04":{colorSub:"37"}, "07":{colorSub:"81"}, "08":{colorSub:"39"}},
+			"0201812":{color:"04", "04":{colorSub:"47"}, "07":{colorSub:"81"}, "08":{colorSub:"39"}},
+			"0201813":{color:"04", "04":{colorSub:"55"}, "07":{colorSub:"81"}, "08":{colorSub:"39"}},
 			"0200085":{color:"02", "01":{colorSub:"46"}, "02":{colorSub:"44"}},
 			"0200087":{color:"04", "03":{colorSub:"36"}, "04":{colorSub:"37"}, "05":{colorSub:"45"}},
 			"0200088":{color:"04", "03":{colorSub:"36"}, "04":{colorSub:"47"}, "05":{colorSub:"45"}},
@@ -697,6 +712,22 @@
 		};
 
 		var products = {
+			"0201946":{ colors:["04", "05", "06"]
+				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
+				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}
+				, "06":{ colorSubs:["33", "38", "84"], "33":true, "38":true, "84":true}},
+			"0201811":{ colors:["04", "07", "08"]
+				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
+				, "07":{ colorSubs:["81", "91", "99"], "81":true, "91":true, "99":true}
+				, "08":{ colorSubs:["39", "82"], "39":true, "82":true}},
+			"0201812":{ colors:["04", "07", "08"]
+				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
+				, "07":{ colorSubs:["81", "91", "99"], "81":true, "91":true, "99":true}
+				, "08":{ colorSubs:["39", "82"], "39":true, "82":true}},
+			"0201813":{ colors:["04", "07", "08"]
+				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
+				, "07":{ colorSubs:["81", "91", "99"], "81":true, "91":true, "99":true}
+				, "08":{ colorSubs:["39", "82"], "39":true, "82":true}},
 			"0200085":{ colors:["01", "02"]
 				, "01":{ colorSubs:["46"], "46":true}
 				, "02":{ colorSubs:["44"], "44":true}},
@@ -712,6 +743,10 @@
 				, "03":{ colorSubs:["36", "92"], "36":true, "92":true}
 				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
 				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}},
+			"0200093":{ colors:["03", "04", "05"]
+				, "03":{ colorSubs:["36", "92"], "36":true, "92":true}
+				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
+				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}},
 			"0200090":{ colors:["04", "05", "06"]
 				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
 				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}
@@ -724,21 +759,21 @@
 				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
 				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}
 				, "06":{ colorSubs:["33", "38", "84"], "33":true, "38":true, "84":true}},
-			"0200093":{ colors:["03", "04", "05"]
-				, "03":{ colorSubs:["36", "92"], "36":true, "92":true}
-				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
-				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}},
-			"0200094":{ colors:["04", "05", "06"]
-				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
-				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}
-				, "06":{ colorSubs:["33", "38", "84"], "33":true, "38":true, "84":true}},
 			"0200095":{ colors:["04", "07", "08"]
 				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
 				, "07":{ colorSubs:["81", "91", "99"], "81":true, "91":true, "99":true}
 				, "08":{ colorSubs:["39", "82"], "39":true, "82":true}},
+			"0200094":{ colors:["04", "05", "06"]
+				, "04":{ colorSubs:["37", "47", "55"], "37":true, "47":true, "55":true}
+				, "05":{ colorSubs:["45", "73", "83"], "45":true, "73":true, "83":true}
+				, "06":{ colorSubs:["33", "38", "84"], "33":true, "38":true, "84":true}},
 		};
 
 		var productReNumber = {
+			"0201946":{"15":"1201946", "16":"1201946", "17":"1201946"},
+			"0201811":{"15":"1201811", "16":"1201811", "17":"1201811"},
+			"0201812":{"15":"1201812", "16":"1201812", "17":"1201812"},
+			"0201813":{"15":"1201813", "16":"1201813", "17":"1201813"},
 			"0200085":{"15":"1200085", "16":"1200085", "17":"1200085"},
 			"0200087":{"15":"1200087", "16":"1200087", "17":"1200087"},
 			"0200088":{"15":"1200088", "16":"1200088", "17":"1200088"},
@@ -842,7 +877,7 @@
 			$("#view-1-logo-img").attr("src",img_logo_2);
 			$("#view-1-back").on("click",function(){change_View("#view-1", "#view-0");return false;});
 
-			set_View_1_Products($("#view-1-switch0"), productList_A);
+			set_View_1_Products($("#view-1-switch1"), productList_B);
 
 			$("#view-1-switch0").on("click",function(event){set_View_1_Products($(event.currentTarget), productList_A);return false;});
 			$("#view-1-switch1").on("click",function(event){set_View_1_Products($(event.currentTarget), productList_B);return false;});
@@ -1197,7 +1232,7 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-start">Touch to Start</div>
-			<div id="view-0-version">0111</div>
+			<div id="view-0-version">0309</div>
 		</div>
 		<div id="view-1">
 			<div class="header">
@@ -1209,7 +1244,7 @@
 			<div id="view-1-content">
 				<div class="flex-center">
 					<div id="view-1-switch0" class="view-1-switch"><div class="switch-frame"><div class="switch-name">洋裝</div></div></div>
-					<div id="view-1-switch1" class="view-1-switch"><div class="switch-frame"><div class="switch-name">長版上衣</div></div></div>
+					<div id="view-1-switch1" class="view-1-switch"><div class="switch-frame"><div class="switch-name">長版上衣・褲</div></div></div>
 				</div>
 				<div class="flex-center">
 					<div id="view-1-select0" class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
