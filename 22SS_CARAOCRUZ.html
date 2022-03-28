@@ -631,26 +631,33 @@
 		};
 
 		var productList_A = [
+			{"productNumber":"4200282" ,"productName":"チュニック 0282"			,"colorCode":"01" ,"colorSubCode":"56" ,"productReleaseDate":"2022/3/30","mark_001":"クールドッツ"},
 			{"productNumber":"4200283" ,"productName":"Aライン 0283"			,"colorCode":"02" ,"colorSubCode":"72" ,"productReleaseDate":"2022/3/9","mark_001":"クールドッツ"},
 			{"productNumber":"4200284" ,"productName":"フィット＆フレア 0284"	,"colorCode":"01" ,"colorSubCode":"39" ,"productReleaseDate":"2022/3/9","mark_001":"クールドッツ"},
 		];
 
 		var productInfo = {
+			"4200282":{name:"チュニック"		, price:37400, size: "7～13号",},
 			"4200283":{name:"Aライン"			, price:53900, size: "7～13号",},
 			"4200284":{name:"フィット＆フレア"	, price:55000, size: "7～13号",},
 		};
 
 		var productSize = {
+			"4200282":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":false, "16":false, "17":false},
 			"4200283":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":false, "16":false, "17":false},
 			"4200284":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":false, "16":false, "17":false},
 		};
 
 		var productDefault = {
+			"4200282":{color:"01", "01":{colorSub:"56"}, "02":{colorSub:"72"}},
 			"4200283":{color:"02", "01":{colorSub:"56"}, "02":{colorSub:"72"}},
 			"4200284":{color:"01", "01":{colorSub:"39"}, "02":{colorSub:"72"}},
 		};
 
 		var products = {
+			"4200282":{ colors:["01", "02"]
+				, "01":{ colorSubs:["39", "56"], "39":true, "56":true}
+				, "02":{ colorSubs:["42", "72"], "42":true, "72":true}},
 			"4200283":{ colors:["01", "02"]
 				, "01":{ colorSubs:["39", "56"], "39":true, "56":true}
 				, "02":{ colorSubs:["42", "72"], "42":true, "72":true}},
@@ -660,6 +667,7 @@
 		};
 
 		var productReNumber = {
+			"4200282":{},
 			"4200283":{},
 			"4200284":{},
 		};
@@ -1084,7 +1092,7 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-start">Touch to Start</div>
-			<div id="view-0-version">0309</div>
+			<div id="view-0-version">0330</div>
 		</div>
 		<div id="view-1">
 			<div class="header">
