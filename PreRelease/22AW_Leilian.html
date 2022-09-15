@@ -843,15 +843,12 @@
 
 		$(document).ready(function(){
 			if ('serviceWorker' in navigator) {
-				console.log("SW supported");
 				var worker = navigator.serviceWorker.register('./ServiceWorker.js').then((registration)=>{
 					console.log("SW registered");
 
-					console.log(registration.active);
-
-					if(!registration.active){
-						console.log("SW update");
-						registration.update();
+					if(!navigator.serviceWorker.controller){
+						console.log("SW ready");
+						navigator.serviceWorker.ready?.active.postMessage({"command":"claim"});
 					}
 				},()=>{console.log("SW Failed");});
 			}
