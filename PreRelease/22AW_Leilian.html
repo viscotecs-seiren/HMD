@@ -843,8 +843,17 @@
 
 		$(document).ready(function(){
 			if ('serviceWorker' in navigator) {
-				console.log("SW Supported");
-				navigator.serviceWorker.register('./ServiceWorker.js').then(()=>{console.log("SW registered");},()=>{console.log("SW Failed");});
+				console.log("SW supported");
+				var worker = navigator.serviceWorker.register('./ServiceWorker.js').then((registration)=>{
+					console.log("SW registered");
+
+					console.log(registration.active);
+
+					if(!registration.active){
+						console.log("SW update");
+						registration.update();
+					}
+				},()=>{console.log("SW Failed");});
 			}
 
 			init_View_0();
