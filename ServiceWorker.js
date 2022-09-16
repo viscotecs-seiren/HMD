@@ -45,6 +45,10 @@ self.addEventListener("fetch", (event) => {
 
 self.addEventListener("message", (event) => {
 	if(event.data["command"]) {
+		if(event.data["command"] === "claim") {
+			console.log("SW claim");
+			self.clients.claim();
+		}
 		if(event.data["command"] === "clearCache") {
 			event.waitUntil(
 				event.waitUntil(caches.open(CACHE_NAME).then((cache) => {
