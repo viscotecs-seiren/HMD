@@ -849,12 +849,9 @@
 					if(!navigator.serviceWorker.controller){
 						console.log("SW ready");
 						navigator.serviceWorker.ready.then((registration)=>{
+							worker = registration.active;
 
-							console.log(registration);
-							console.log(registration.active);
-
-
-							registration.active.postMessage({"command":"claim"});
+							worker.postMessage({"command":"claim"});
 						});
 					}
 				},()=>{console.log("SW Failed");});
@@ -876,7 +873,7 @@
 			if(view_show === "#view-0"){
 				if ('serviceWorker' in navigator) {
 					var controller = navigator.serviceWorker.controller;
-					controller.postMessage({"command":"clearCache"});
+					controller?.postMessage({"command":"clearCache"});
 				}
 			}
 
