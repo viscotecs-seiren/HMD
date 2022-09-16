@@ -848,7 +848,14 @@
 
 					if(!navigator.serviceWorker.controller){
 						console.log("SW ready");
-						navigator.serviceWorker.ready?.active.postMessage({"command":"claim"});
+						navigator.serviceWorker.ready.then((registration)=>{
+
+							console.log(registration);
+							console.log(registration.active);
+
+
+							registration.active.postMessage({"command":"claim"});
+						});
 					}
 				},()=>{console.log("SW Failed");});
 			}
