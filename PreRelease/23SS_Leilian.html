@@ -665,6 +665,8 @@
 		];
 
 		var productList_C = [
+			{"productNumber":"0303762" ,"productName":"Tシャツ 3762","colorCode":"11" ,"colorSubCode":"63" ,"productReleaseDate":"2023/04/05","mark_001":"スムース"},
+			{"productNumber":"0303763" ,"productName":"チュニック 3763","colorCode":"10" ,"colorSubCode":"74" ,"productReleaseDate":"2023/04/05","mark_001":"スムース"},
 			{"productNumber":"0303127" ,"productName":"ノーカラーチュニック 3127","colorCode":"04" ,"colorSubCode":"34" ,"productReleaseDate":"2023/03/01","mark_001":"デシン"},
 			{"productNumber":"0301085" ,"productName":"チュニック 1085","colorCode":"04" ,"colorSubCode":"54" ,"productReleaseDate":"2023/01/25","mark_001":"デシン"},
 			{"productNumber":"0301086" ,"productName":"ジャケット 1086","colorCode":"09" ,"colorSubCode":"99" ,"productReleaseDate":"2023/03/01","mark_001":"パワーネット"},
@@ -673,7 +675,9 @@
 		];
 
 		var productInfo = {
-			"0303127":{name:"ノーカラーチュニック", price:46200, size: "7～17+号",},
+			"0303762":{name:"Tシャツ", price:28600, size: "7～17+号",},
+			"0303763":{name:"チュニック", price:33000, size: "7～17+号",},
+				"0303127":{name:"ノーカラーチュニック", price:46200, size: "7～17+号",},
 			"0301085":{name:"チュニック", price:46200, size: "7～17+号",},
 			"0301086":{name:"ジャケット", price:42900, size: "7～17+号",},
 			"0301087":{name:"ジャケット", price:53900, size: "7～17+号",},
@@ -702,6 +706,8 @@
 		};
 
 		var productSize = {
+			"0303762":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
+			"0303763":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0303127":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0301085":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
 			"0301086":{"05":false, "07":true , "09":true , "11":true , "13":true , "15":true , "16":true , "17":true },
@@ -731,6 +737,8 @@
 		};
 
 		var productDefault = {
+			"0303762":{color:"11", "10":{colorSub:"74"}, "11":{colorSub:"63"}, "12":{colorSub:"34"}, "13":{colorSub:"43"}, "14":{colorSub:"64"}},
+			"0303763":{color:"10", "10":{colorSub:"74"}, "11":{colorSub:"63"}, "12":{colorSub:"34"}, "13":{colorSub:"43"}, "14":{colorSub:"64"}},
 			"0303127":{color:"04", "04":{colorSub:"54"}, "07":{colorSub:"44"}, "08":{colorSub:"38"}},
 			"0301085":{color:"04", "04":{colorSub:"54"}, "07":{colorSub:"44"}, "08":{colorSub:"38"}},
 			"0301086":{color:"09", "09":{colorSub:"99"}},
@@ -760,6 +768,18 @@
 		};
 
 		var products = {
+			"0303762":{ colors:["10", "11", "12", "13", "14"]
+				, "10":{ colorSubs:["53", "74"], "53":true, "74":true}
+				, "11":{ colorSubs:["63", "72"], "63":true, "72":true}
+				, "12":{ colorSubs:["34", "54"], "34":true, "54":true}
+				, "13":{ colorSubs:["43", "92"], "43":true, "92":true}
+				, "14":{ colorSubs:["64", "93"], "64":true, "93":true}},
+			"0303763":{ colors:["10", "11", "12", "13", "14"]
+				, "10":{ colorSubs:["53", "74"], "53":true, "74":true}
+				, "11":{ colorSubs:["63", "72"], "63":true, "72":true}
+				, "12":{ colorSubs:["34", "54"], "34":true, "54":true}
+				, "13":{ colorSubs:["43", "92"], "43":true, "92":true}
+				, "14":{ colorSubs:["64", "93"], "64":true, "93":true}},
 			"0303127":{ colors:["04", "07", "08"]
 				, "04":{ colorSubs:["29", "34", "54"], "29":true, "34":true, "54":true}
 				, "07":{ colorSubs:["39", "44", "79"], "39":true, "44":true, "79":true}
@@ -843,6 +863,8 @@
 		};
 
 		var productReNumber = {
+			"0303762":{"15":"1303762", "16":"1303762", "17":"1303762"},
+			"0303763":{"15":"1303763", "16":"1303763", "17":"1303763"},
 			"0303127":{"15":"1303127", "16":"1303127", "17":"1303127"},
 			"0301085":{"15":"1301085", "16":"1301085", "17":"1301085"},
 			"0301086":{"15":"1301086", "16":"1301086", "17":"1301086"},
@@ -881,6 +903,11 @@
 			"03" : "更紗フラワー",
 			"06" : "ストライプ",
 			"05" : "アクトレッソレース",
+			"10" : "water lilies",
+			"11" : "rising sun",
+			"12" : "smooth sea",
+			"13" : "lake",
+			"14" : "line of trees",
 		};
 
 		var colorSubName = {
@@ -894,14 +921,22 @@
 			"39" : "ネイビー",
 			"42" : "グリーン",
 			"43" : "グリーン",
+			"43" : "アクアグリーン",
 			"44" : "グリーン",
+			"53" : "レモン",
 			"54" : "イエロー",
 			"56" : "イエロー",
+			"63" : "コーラル",
 			"64" : "コーラル",
+			"64" : "オレンジ",
 			"72" : "ピンク",
 			"79" : "ピンク",
+			"72" : "ライトピンク",
+			"74" : "ピンク",
 			"78" : "ボルドー",
 			"81" : "オフホワイト",
+			"92" : "ライトグレー",
+			"93" : "グレー",
 			"98" : "ブラック",
 			"99" : "ブラック",
 		};
@@ -1332,7 +1367,7 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-start">Touch to Start</div>
-			<div id="view-0-version">0301</div>
+			<div id="view-0-version">0405</div>
 		</div>
 		<div id="view-1">
 			<div class="header">
@@ -1345,7 +1380,7 @@
 				<div class="flex-center">
 					<div id="view-1-switch0" class="view-1-switch"><div class="switch-frame"><div class="switch-name">ワンピース１</div></div></div>
 					<div id="view-1-switch1" class="view-1-switch"><div class="switch-frame"><div class="switch-name">ワンピース２</div></div></div>
-					<div id="view-1-switch2" class="view-1-switch"><div class="switch-frame"><div class="switch-name">チュニック・ジャケット・パンツ</div></div></div>
+					<div id="view-1-switch2" class="view-1-switch"><div class="switch-frame"><div class="switch-name">Tシャツ,チュニック・ジャケット・パンツ</div></div></div>
 				</div>
 				<div class="flex-center">
 					<div id="view-1-select0"  class="view-1-select"><div class="select-frame"><img class="select-img"/><div class="select-size"></div></div><div class="select-name"></div><div class="select-number"></div><div class="select-price"></div><div class="select-mark"></div></div>
