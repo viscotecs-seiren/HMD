@@ -725,7 +725,7 @@
 		};
 
 		var productDefault = {
-			"0304115":{color:"01", "01":{colorSub:"44"}},
+			"0304115":{color:"01", "01":{colorSub:"44"}, "02":{colorSub:"38"}, "05":{colorSub:"54"}, "06":{colorSub:"77"}, "07":{colorSub:"98"}},
 			"0304116":{color:"03", "02":{colorSub:"38"}, "03":{colorSub:"33"}, "04":{colorSub:"23"}, "05":{colorSub:"28"}, "06":{colorSub:"77"}, "07":{colorSub:"98"}},
 			"0304117":{color:"04", "02":{colorSub:"38"}, "03":{colorSub:"33"}, "04":{colorSub:"75"}, "05":{colorSub:"28"}, "06":{colorSub:"77"}, "07":{colorSub:"98"}},
 			"0304118":{color:"01", "01":{colorSub:"44"}},
@@ -752,8 +752,12 @@
 		};
 
 		var products = {
-			"0304115":{ colors:["01"]
-				, "01":{ colorSubs:["44"], "44":true}},
+			"0304115":{ colors:["01", "02", "05", "06", "07"]
+				, "01":{ colorSubs:["44"], "44":true}
+				, "02":{ colorSubs:["38", "42", "92"], "38":true, "42":true, "92":true}
+				, "05":{ colorSubs:["28", "36", "48", "54", "73"], "28":true, "36":true, "48":true, "54":true, "73":true}
+				, "06":{ colorSubs:["37", "57", "77", "87"], "37":true, "57":true, "77":true, "87":true}
+				, "07":{ colorSubs:["88", "97", "98"], "88":true, "97":true, "98":true}},
 			"0304116":{ colors:["02", "03", "04", "05", "06", "07"]
 				, "02":{ colorSubs:["38", "42", "92"], "38":true, "42":true, "92":true}
 				, "03":{ colorSubs:["27", "33", "43", "63"], "27":true, "33":true, "43":true, "63":true}
@@ -1386,7 +1390,7 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-start">Touch to Start</div>
-			<div id="view-0-version">0816</div>
+			<div id="view-0-version">1102</div>
 		</div>
 		<div id="view-1">
 			<div class="header">
