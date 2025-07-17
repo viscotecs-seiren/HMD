@@ -6,7 +6,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-title" content="leilian" />
 	<link rel="apple-touch-icon" href="/HMD/apple-touch-icon.png">
-	<title>HMD 25SS</title>
+	<title>HMD 25AW</title>
 	<style>
 		* {
 			-webkit-user-select: none;
@@ -39,6 +39,13 @@
 		.header {
 			background-color: black;
 			position: static;
+		}
+		.header-PreRelease {
+			position: absolute;
+			top: 0;
+			right: 0;
+			color: #F42A14;;
+			font-size: 40px;
 		}
 		.header-logo {
 			height: 60px;
@@ -1367,11 +1374,13 @@
 				<img id="view-0-logo-img"/>
 			</div>
 			<div id="view-0-PreRelease">プレリリース版</div>
+
 			<div id="view-0-start">Touch to Start</div>
 			<div id="view-0-version">0131</div>
 		</div>
 		<div id="view-1">
 			<div class="header">
+				<span class="header-PreRelease">プレリリース版</span>
 				<div id="view-1-back" class="header-back"></div>
 				<div id="view-1-logo" class="flex-center header-logo">
 					<img id="view-1-logo-img"/>
